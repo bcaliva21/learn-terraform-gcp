@@ -1,0 +1,28 @@
+-- Step 1: Create the enum type for position
+CREATE TYPE position_enum AS ENUM ('PG', 'SG', 'SF', 'PF', 'C');
+
+-- Step 2: Create the basketball-players table
+CREATE TABLE basketball_players (
+    name        VARCHAR(255) NOT NULL,      -- Assuming the name will be a string of up to 255 characters
+    position    position_enum NOT NULL,     -- Enum type for position
+    number      INT NOT NULL,               -- The player's number
+    weight      VARCHAR(50),                -- Weight as a string, as per the schema
+    height      VARCHAR(50),                -- Height as a string, as per the schema
+    team        VARCHAR(255) NOT NULL,      -- Team name as a string (you can adjust the length)
+    
+    -- Optional: You may want to add a primary key, especially if 'name' is unique.
+    PRIMARY KEY (name, team)               -- Assuming name and team are unique together
+);
+
+INSERT INTO basketball_players (name, position, number, weight, height, team)
+VALUES
+    ('Victor Wembanyama', 'C', 1, '235 lbs', '7\'4"', 'Spurs'),
+    ('Jane Smith', 'SG', 23, '180 lbs', '6\'0"', 'Bulls'),
+    ('Michael Jordan', 'SF', 23, '215 lbs', '6\'6"', 'Bulls'),
+    ('LeBron James', 'SF', 6, '250 lbs', '6\'9"', 'Heat'),
+    ('Stephen Curry', 'PG', 30, '185 lbs', '6\'3"', 'Warriors'),
+    ('Kevin Durant', 'PF', 7, '240 lbs', '6\'10"', 'Nets'),
+    ('Kobe Bryant', 'SG', 24, '212 lbs', '6\'6"', 'Lakers'),
+    ('Giannis Antetokounmpo', 'PF', 34, '242 lbs', '7\'0"', 'Bucks'),
+    ('Carmelo Anthony', 'SF', 7, '240 lbs', '6\'8"', 'Lakers'),
+    ('Chris Paul', 'PG', 3, '175 lbs', '6\'1"', 'Spurs');
