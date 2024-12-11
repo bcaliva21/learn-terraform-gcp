@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+ Copyright 2021 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html>
+<head>
+  <title>Datastore and Firebase Auth Example</title>
+
+
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ 
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
+ <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+</head>
+<body>
+
+<div id="firebaseui-auth-container"></div>
+
+<button id="sign-out" hidden=true>Sign Out</button>
+
+<div id="login-info" hidden=true>
+  <h2>Login info:</h2>
+  {% if user_data %}
+    <dl>
+      <dt>Name</dt><dd>{{ user_data['name'] }}</dd>
+      <dt>Email</dt><dd>{{ user_data['email'] }}</dd>
+      <dt>Last 10 visits</dt><dd>
+	{% for time in times %}
+          <p>{{ time['timestamp'] }}</p>
+        {% endfor %} </dd>
+    </dl>
+  {% elif error_message %}
+    <p>Error: {{ error_message }}</p>
+  {% endif %}
+</div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+ 
+  const firebaseConfig = {
+    apiKey: "AIzaSyCl7gUK-z_Jt_NPwe8exlph7tRRAi29NEQ",
+    authDomain: "web-app-eb2f1.firebaseapp.com",
+    projectId: "web-app-eb2f1",
+    storageBucket: "web-app-eb2f1.firebasestorage.app",
+    messagingSenderId: "40099431715",
+    appId: "1:40099431715:web:28dc69c8e9631909d9f896",
+    measurementId: "G-446FC6R28V"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+  <script async src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

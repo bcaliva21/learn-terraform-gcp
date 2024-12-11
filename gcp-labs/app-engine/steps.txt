@@ -1,0 +1,17 @@
+1. Create or select project
+2. Authenticate yourself for cli/init or reinit the environment
+	2cmd. gcloud init
+3. Create the application in app-engine
+	3cmd. gcloud app create
+4. Enable local testing with datastore
+	4cmd. gcloud auth application-default login
+5. Deploy app by running the following command in the root dir of the project
+	5cmd. gcloud app deploy
+6. You can reach the project at https://PROJECT_ID.REGION_ID.r.appspot.com, 
+you can also use the following command to get taken to the above url
+	6cmd. gcloud app browse
+7. For future deployment you can just run the following command, there are
+flags you can add to this command like kubernetes
+	7cmd. gcloud app deploy
+8. Enable datastore api with the following command
+	8cmd. gcloud services enable datastore.googleapis.com
