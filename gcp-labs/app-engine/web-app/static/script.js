@@ -32,7 +32,7 @@ window.addEventListener('load', function() {
 
         ],
         // Terms of service url.
-        tosUrl: '<your-tos-url>'
+        tosUrl: 'https://amiable-fin-444418-i4.uc.r.appspot.com/'
     };
 
     firebase.auth().onAuthStateChanged(function(user) {
